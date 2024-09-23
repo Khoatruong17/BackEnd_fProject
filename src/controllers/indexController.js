@@ -2,7 +2,7 @@ const Hello = (req, res) => {
   try {
     return res.status(200).json(
         {
-          EM: 'Hello successfully',
+          EM: 'Server is living ',
           EC: '0',
           DT: ''
         }
@@ -12,7 +12,7 @@ const Hello = (req, res) => {
         {
           EM: 'Internal Server Error',
           EC: '-1',
-          DT: ''
+          DT: error
         }
       );
   }
