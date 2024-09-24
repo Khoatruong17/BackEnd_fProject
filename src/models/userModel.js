@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    email: { type: String, required: true, unique: true },
-    passwordHash: { type: String, required: true },
-    name: { type: String },
+    email: { type: String, unique: true, sparse: true },
+    passwordHash: { type: String },
+    username: { type: String },
     phoneNumber: { type: String },
     address: { type: String },
-    role: { type: String, enum: ['user', 'host', 'admin'] },
     role_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "role",
