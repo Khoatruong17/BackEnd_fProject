@@ -9,6 +9,9 @@ const createRole = async (req, res) => {
         message: "Role is required ",
       });
     }
+    if (!description) {
+      return res.status(400).json({ message: "Description is required" });
+    }
 
     const existingRole = await Role.findOne({ role });
     if (existingRole) {

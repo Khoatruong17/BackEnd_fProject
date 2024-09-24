@@ -17,9 +17,13 @@ const dbState = [
 ];
 
 const connection = async () => {
-  await mongoose.connect(process.env.DB_MONGOOSE);
-  const state = Number(mongoose.connection.readyState);
-  console.log(dbState.find((f) => f.value == state).label, "to db");
+  try {
+    await mongoose.connect(process.env.DB_MONGOOSE);
+    const state = Number(mongoose.connection.readyState);
+    console.log(dbState.find((f) => f.value == state).label, "to db");
+  } catch (error) {
+    console.error("Database connection error:", error);
+  }
 };
 
 module.exports = connection;
